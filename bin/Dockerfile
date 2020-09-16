@@ -1,4 +1,4 @@
-FROM php:7.1.20-apache
+FROM php:7.0.33-apache
 
 RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
@@ -7,7 +7,7 @@ RUN apt-get upgrade -y
 RUN apt-get -y install apt-utils nano wget dialog
 
 # Install important libraries
-RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl3 libcurl3-dev zip
+RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl3 libcurl3-dev zip unzip
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -44,3 +44,5 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 # Enable apache modules
 RUN a2enmod rewrite headers
+
+RUN alias ll="ls -la"
