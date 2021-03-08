@@ -47,7 +47,13 @@ RUN apt-get update && \
     apt-get install -y libxml2-dev && \
     docker-php-ext-install soap
 
+# for PDF Manager
+RUN apt-get install libfontconfig1 libxrender1
+
 # Enable apache modules
 RUN a2enmod rewrite headers
+
+VOLUME [ "/var/www/html" ]
+USER www-data
 
 RUN alias ll="ls -la"

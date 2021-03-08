@@ -22,6 +22,7 @@ services:
       context: "./bin/${DATABASE}"
     container_name: '${COMPOSE_PROJECT_NAME}-database'
     restart: 'always'
+    command: "--innodb_use_native_aio=0"
     ports:
       - "127.0.0.1:${HOST_MACHINE_MYSQL_PORT}:3306"
     volumes: 
