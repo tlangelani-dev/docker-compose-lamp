@@ -8,7 +8,7 @@ RUN apt-get -y install apt-utils nano wget dialog
 
 # Install important libraries
 # libcurl3 libcurl3-dev unzip
-RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl4-openssl-dev libzip-dev libonig-dev
+RUN apt-get -y install --fix-missing apt-utils build-essential git curl libcurl4-openssl-dev libonig-dev
 
 # Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -32,7 +32,7 @@ RUN docker-php-ext-install curl
 RUN docker-php-ext-install tokenizer
 RUN docker-php-ext-install json
 
-RUN apt-get -y install zlib1g-dev
+RUN apt-get -y install zlib1g-dev libzip-dev unzip
 RUN docker-php-ext-install zip
 
 RUN apt-get -y install libicu-dev
