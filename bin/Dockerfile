@@ -46,6 +46,8 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-install exif
 
+RUN apt-get -y install libxrender1 libxext6 libfontconfig
+
 # add php soap library
 RUN apt-get update && \
     apt-get install -y libxml2-dev && \
