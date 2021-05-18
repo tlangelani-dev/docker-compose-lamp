@@ -56,4 +56,10 @@ RUN apt-get update && \
 # Enable apache modules
 RUN a2enmod rewrite headers
 
-RUN alias ll="ls -la"
+# setup datetime (doesnt work)
+# RUN echo "Africa/Johannesburg" > /etc/timezone
+# RUN dpkg-reconfigure -f noninteractive tzdata
+
+# RUN alias ll="ls -la"
+RUN echo "export LS_OPTIONS='--color=auto'" >> ~/.bashrc
+RUN echo "alias ll='ls -la'" >> ~/.bashrc
