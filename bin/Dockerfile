@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:7.3-apache
 
 RUN apt-get -y update --fix-missing
 RUN apt-get upgrade -y
@@ -35,13 +35,14 @@ RUN docker-php-ext-install json
 RUN apt-get -y install zlib1g-dev libzip-dev unzip
 RUN docker-php-ext-install zip
 
-RUN apt-get -y install libicu-dev
+RUN apt-get -y install libicu-dev libwebp-dev
 RUN docker-php-ext-install -j$(nproc) intl
 
 RUN docker-php-ext-install mbstring
 
 RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
+RUN  docker-php-ext-configure gd --with-freetype-dir=/usr/include/  --with-jpeg-dir=/usr/include/  --with-webp-dir=/usr/include/
 RUN docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-install exif
