@@ -78,6 +78,8 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install calendar && \
     docker-php-ext-install exif
 
+# we need tidy module
+RUN apt-get -y update && apt-get install -y libtidy-dev && docker-php-ext-install tidy && docker-php-ext-enable tidy 
 
 # Install Freetype 
 RUN apt-get -y update && \
