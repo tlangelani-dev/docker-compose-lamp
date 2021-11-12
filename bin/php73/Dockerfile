@@ -42,6 +42,9 @@ RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install mbstring && \
     docker-php-ext-install gettext
 
+# we need tidy module
+RUN apt-get -y update && apt-get install -y libtidy-dev && docker-php-ext-install tidy && docker-php-ext-enable tidy 
+
 # Install Freetype 
 RUN apt-get -y update && \
     apt-get --no-install-recommends install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev && \
