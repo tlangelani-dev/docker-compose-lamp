@@ -49,6 +49,9 @@ RUN apt-get update && \
     pecl install imagick && \
     docker-php-ext-enable imagick
 
+# we need tidy module
+RUN apt-get -y update && apt-get install -y libtidy-dev && docker-php-ext-install tidy && docker-php-ext-enable tidy 
+
 # Other PHP7 Extensions
 
 RUN docker-php-ext-install pdo_mysql && \
